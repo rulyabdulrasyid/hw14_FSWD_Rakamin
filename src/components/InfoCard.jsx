@@ -8,6 +8,7 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 function InfoCard(props) {
   const { id, title, author, publisher, image } = props;
@@ -20,7 +21,7 @@ function InfoCard(props) {
       <Image
         objectFit="cover"
         maxW={{ base: "100%", sm: "200px" }}
-        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${image}`}
+        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
         alt={title}
       />
 
@@ -31,9 +32,11 @@ function InfoCard(props) {
           <Text py="2">{publisher}</Text>
         </CardBody>
         <CardFooter>
-          <Button variant="solid" colorScheme="blue">
-            See More
-          </Button>
+          <Link href={`/books/${id}`}>
+            <Button variant="solid" colorScheme="blue" cursor="pointer">
+              See More
+            </Button>
+          </Link>
         </CardFooter>
       </Stack>
     </Card>
